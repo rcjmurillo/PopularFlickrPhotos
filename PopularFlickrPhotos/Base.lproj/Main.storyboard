@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9z9-xP-Yqa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AQ3-v0-03B">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
     </dependencies>
     <scenes>
-        <!--Photos Table View Controller-->
+        <!--Photos Table View Controller - Popular Photos-->
         <scene sceneID="Qcm-st-3f4">
             <objects>
                 <tableViewController id="9z9-xP-Yqa" customClass="PhotosTableViewController" customModule="PopularFlickrPhotos" customModuleProvider="target" sceneMemberID="viewController">
@@ -14,7 +14,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" textLabel="Tcf-pC-Hxt" detailTextLabel="2F1-lD-kqY" style="IBUITableViewCellStyleSubtitle" id="Z8d-uq-1nw">
+                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Place Cell" textLabel="Tcf-pC-Hxt" detailTextLabel="2F1-lD-kqY" style="IBUITableViewCellStyleSubtitle" id="Z8d-uq-1nw">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z8d-uq-1nw" id="CiM-1Y-JNc">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -40,8 +40,56 @@
                             <outlet property="delegate" destination="9z9-xP-Yqa" id="4Mk-vc-ujh"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Popular Photos" id="bpV-EI-n77"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SjN-a5-9c3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="871" y="47"/>
+        </scene>
+        <!--Table View Controller - 20 most recently viewed photos -->
+        <scene sceneID="MTL-jg-ThH">
+            <objects>
+                <tableViewController id="Cly-Z0-M6h" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5oB-c8-gQV">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" id="r0k-yl-YI0">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r0k-yl-YI0" id="sES-Gb-BD9">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Cly-Z0-M6h" id="ofv-N9-qfr"/>
+                            <outlet property="delegate" destination="Cly-Z0-M6h" id="izH-zi-VK1"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="20 most recently viewed photos " id="yus-Oe-tef"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aF1-m4-IAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="871" y="655"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="LSL-bd-F1y">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="AQ3-v0-03B" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="FxX-02-kb2">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="9z9-xP-Yqa" kind="relationship" relationship="viewControllers" id="ouv-t0-91G"/>
+                        <segue destination="Cly-Z0-M6h" kind="relationship" relationship="viewControllers" id="rnE-Nd-ALr"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="viS-JF-2QN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="221" y="145"/>
         </scene>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C8CCDE51952312F00770EAD /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8CCDE41952312F00770EAD /* Photo.swift */; };
 		6CD679E61950C06600530D0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD679E51950C06600530D0F /* AppDelegate.swift */; };
 		6CD679EB1950C06600530D0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CD679E91950C06600530D0F /* Main.storyboard */; };
 		6CD679ED1950C06600530D0F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CD679EC1950C06600530D0F /* Images.xcassets */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6C8CCDE41952312F00770EAD /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		6CD679E01950C06600530D0F /* PopularFlickrPhotos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopularFlickrPhotos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CD679E41950C06600530D0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CD679E51950C06600530D0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C8CCDE31952311900770EAD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6C8CCDE41952312F00770EAD /* Photo.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		6CD679D71950C06600530D0F = {
 			isa = PBXGroup;
 			children = (
@@ -80,8 +90,9 @@
 		6CD679E21950C06600530D0F /* PopularFlickrPhotos */ = {
 			isa = PBXGroup;
 			children = (
+				6C8CCDE31952311900770EAD /* Models */,
+				8013DE1419513C0F00C58C32 /* FlickrFetcher */,
 				8013DE1319513BC800C58C32 /* PopularFlickrPhotos-Bridging-Header.h */,
-				8013DE1419513C0F00C58C32 /* FlickraFetcher */,
 				6CD679E51950C06600530D0F /* AppDelegate.swift */,
 				8013DE19195142B500C58C32 /* PhotosTableViewController.swift */,
 				6CD679E91950C06600530D0F /* Main.storyboard */,
@@ -116,14 +127,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		8013DE1419513C0F00C58C32 /* FlickraFetcher */ = {
+		8013DE1419513C0F00C58C32 /* FlickrFetcher */ = {
 			isa = PBXGroup;
 			children = (
 				8013DE1519513C0F00C58C32 /* FlickrAPIKey.h */,
 				8013DE1619513C0F00C58C32 /* FlickrFetcher.h */,
 				8013DE1719513C0F00C58C32 /* FlickrFetcher.m */,
 			);
-			name = FlickraFetcher;
 			path = FlickrFetcher;
 			sourceTree = "<group>";
 		};
@@ -226,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C8CCDE51952312F00770EAD /* Photo.swift in Sources */,
 				8013DE1819513C0F00C58C32 /* FlickrFetcher.m in Sources */,
 				6CD679E61950C06600530D0F /* AppDelegate.swift in Sources */,
 				8013DE1A195142B500C58C32 /* PhotosTableViewController.swift in Sources */,
@@ -347,8 +358,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = PopularFlickrPhotos/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PopularFlickrPhotos/PopularFlickrPhotos-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -358,8 +372,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = PopularFlickrPhotos/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PopularFlickrPhotos/PopularFlickrPhotos-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
