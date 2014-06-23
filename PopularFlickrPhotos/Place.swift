@@ -1,16 +1,18 @@
-
 //
-//  Photo.swift
+//  Place.swift
 //  PopularFlickrPhotos
 //
-//  Created by Ricardo Murillo on 6/18/14.
+//  Created by Ricardo Murillo on 6/21/14.
 //  Copyright (c) 2014 Ricardo Murillo. All rights reserved.
 //
 
 import UIKit
 
-class Photo {
+class Place {
     let data: NSDictionary
+    var id: String {
+        return data[FLICKR_PLACE_ID] as String
+    }
     var country: String {
         let c = data[FLICKR_PLACE_NAME].componentsSeparatedByString(",").reverse()[0] as String
         return c.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
