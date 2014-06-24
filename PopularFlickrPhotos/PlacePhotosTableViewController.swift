@@ -73,7 +73,23 @@ class PlacePhotosTableViewController: UITableViewController {
                 if segue.identifier == "Display Photo" {
                     if segue.destinationViewController is PhotoViewController {
                         let photoViewController = segue.destinationViewController as PhotoViewController
-                        photoViewController.photoURL = FlickrFetcher.URLforPhoto(photos[indexPath.row], format: FlickrPhotoFormatLarge)
+                        let photo = photos[indexPath.row]
+                        photoViewController.photoURL = FlickrFetcher.URLforPhoto(photo, format: FlickrPhotoFormatLarge)
+                        photoViewController.photoTitle = photo[FLICKR_PHOTO_TITLE] as String
+                        
+                        var recentPhotos = NSUserDefaults.standardUserDefaults().arrayForKey(recentPhotosKey)
+                        if recentPhotos {
+                            recentPhotos.insert(photo, atIndex: 0)
+                        }
+//                        var newRecentPhotos = NSDictionary[]()
+//                        newRecentPhotos.append(photo)
+//                        for oldPhoto in recentPhotos {
+//                            let oldPhotoDict = oldPhoto as NSDictionary
+//                            newRecentPhotos.append(oldPhotoDict)
+//                        }
+//                        // Storing the photo into NSUserDefaults
+//                        NSUserDefaults.standardUserDefaults().setObject(newRecentPhotos, forKey: recentPhotosKey)
+//                        NSUserDefaults.standardUserDefaults().synchronize()
                     }
                 }
             }

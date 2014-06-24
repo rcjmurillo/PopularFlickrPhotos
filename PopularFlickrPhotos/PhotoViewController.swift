@@ -10,6 +10,7 @@ import UIKit
 
 class PhotoViewController: UIViewController, UIScrollViewDelegate {
     var photoURL: NSURL!
+    var photoTitle: String!
     @IBOutlet var scrollView : UIScrollView!
     var imageView : UIImageView!
     
@@ -18,6 +19,8 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         
         let photo = UIImage(data: NSData(contentsOfURL: photoURL))
         self.imageView = UIImageView(image: photo)
+        
+        self.title = photoTitle
         
         self.scrollView.contentSize = photo.size
         self.scrollView.addSubview(self.imageView)
