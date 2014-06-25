@@ -126,10 +126,10 @@
             </objects>
             <point key="canvasLocation" x="2793" y="47"/>
         </scene>
-        <!--Table View Controller - 20 most recently viewed photos -->
+        <!--Recent Photos Table View Controller - 20 most recently viewed photos -->
         <scene sceneID="MTL-jg-ThH">
             <objects>
-                <tableViewController id="Cly-Z0-M6h" sceneMemberID="viewController">
+                <tableViewController id="Cly-Z0-M6h" customClass="RecentPhotosTableViewController" customModule="PopularFlickrPhotos" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5oB-c8-gQV">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

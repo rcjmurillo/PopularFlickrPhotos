@@ -77,19 +77,16 @@ class PlacePhotosTableViewController: UITableViewController {
                         photoViewController.photoURL = FlickrFetcher.URLforPhoto(photo, format: FlickrPhotoFormatLarge)
                         photoViewController.photoTitle = photo[FLICKR_PHOTO_TITLE] as String
                         
-                        var recentPhotos = NSUserDefaults.standardUserDefaults().arrayForKey(recentPhotosKey)
-                        if recentPhotos {
-                            recentPhotos.insert(photo, atIndex: 0)
+                        var mutableRecentPhotos: NSMutableArray
+                        if let recentPhotos = NSUserDefaults.standardUserDefaults().arrayForKey(recentPhotosKey) as NSArray! {
+                            mutableRecentPhotos = recentPhotos.mutableCopy() as NSMutableArray
+                        } else {
+                            mutableRecentPhotos = NSMutableArray()
                         }
-//                        var newRecentPhotos = NSDictionary[]()
-//                        newRecentPhotos.append(photo)
-//                        for oldPhoto in recentPhotos {
-//                            let oldPhotoDict = oldPhoto as NSDictionary
-//                            newRecentPhotos.append(oldPhotoDict)
-//                        }
-//                        // Storing the photo into NSUserDefaults
-//                        NSUserDefaults.standardUserDefaults().setObject(newRecentPhotos, forKey: recentPhotosKey)
-//                        NSUserDefaults.standardUserDefaults().synchronize()
+                        mutableRecentPhotos.addObject(photo)
+                        // Storing the photo into NSUserDefaults
+                        NSUserDefaults.standardUserDefaults().setObject(mutableRecentPhotos, forKey: recentPhotosKey)
+                        NSUserDefaults.standardUserDefaults().synchronize()
                     }
                 }
             }
