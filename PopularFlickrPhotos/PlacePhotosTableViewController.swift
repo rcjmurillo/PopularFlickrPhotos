@@ -85,8 +85,9 @@ class PlacePhotosTableViewController: UITableViewController {
                         }
                         mutableRecentPhotos.addObject(photo)
                         // Storing the photo into NSUserDefaults
-                        NSUserDefaults.standardUserDefaults().setObject(mutableRecentPhotos, forKey: recentPhotosKey)
-                        NSUserDefaults.standardUserDefaults().synchronize()
+                        let userDefaults = NSUserDefaults.standardUserDefaults()
+                        userDefaults.setObject(mutableRecentPhotos, forKey: recentPhotosKey)
+                        userDefaults.synchronize()
                     }
                 }
             }

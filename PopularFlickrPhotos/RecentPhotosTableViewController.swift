@@ -28,15 +28,15 @@ class RecentPhotosTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-        println(recentPhotos.count)
         return recentPhotos.count
     }
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Recent Photo Cell", forIndexPath: indexPath) as UITableViewCell!
         let photo = recentPhotos[indexPath.row]
-        cell.textLabel.text = photo[FLICKR_PHOTO_TITLE] as String
-        cell.detailTextLabel.text = photo[FLICKR_PHOTO_DESCRIPTION] as String
-        return cell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Recent Photo Cell", forIndexPath:indexPath) as UITableViewCell!
+        let usableCell = cell as UITableViewCell
+        usableCell.textLabel.text = photo[FLICKR_PHOTO_TITLE] as String
+        usableCell.detailTextLabel.text = photo[FLICKR_PHOTO_DESCRIPTION] as String
+        return usableCell
     }
 }

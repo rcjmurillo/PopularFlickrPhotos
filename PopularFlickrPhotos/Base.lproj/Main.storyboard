@@ -126,48 +126,6 @@
             </objects>
             <point key="canvasLocation" x="2793" y="47"/>
         </scene>
-        <!--Recent Photos Table View Controller - 20 most recently viewed photos -->
-        <scene sceneID="MTL-jg-ThH">
-            <objects>
-                <tableViewController id="Cly-Z0-M6h" customClass="RecentPhotosTableViewController" customModule="PopularFlickrPhotos" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5oB-c8-gQV">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Recent Photo Cell" textLabel="KxW-pz-Rtk" detailTextLabel="7L7-w2-9LD" style="IBUITableViewCellStyleSubtitle" id="r0k-yl-YI0">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r0k-yl-YI0" id="sES-Gb-BD9">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KxW-pz-Rtk">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7L7-w2-9LD">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Cly-Z0-M6h" id="ofv-N9-qfr"/>
-                            <outlet property="delegate" destination="Cly-Z0-M6h" id="izH-zi-VK1"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="20 most recently viewed photos " id="yus-Oe-tef"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aF1-m4-IAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="871" y="655"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="LSL-bd-F1y">
             <objects>
@@ -180,7 +138,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="AqZ-I6-OWk" kind="relationship" relationship="viewControllers" id="ouv-t0-91G"/>
-                        <segue destination="Cly-Z0-M6h" kind="relationship" relationship="viewControllers" id="rnE-Nd-ALr"/>
+                        <segue destination="KkU-Lg-SpT" kind="relationship" relationship="viewControllers" id="fuT-Va-8pp"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="viS-JF-2QN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -205,6 +163,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NkD-m8-a8X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="871" y="47"/>
+        </scene>
+        <!--ObjC Recent Photos Table View Controller - 20 recently viewed photos-->
+        <scene sceneID="Sm4-iG-yj6">
+            <objects>
+                <tableViewController id="KkU-Lg-SpT" customClass="ObjCRecentPhotosTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="77k-d2-apt">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Recent Photo Cell" textLabel="IIQ-e4-OBR" detailTextLabel="p3s-sT-Mig" style="IBUITableViewCellStyleSubtitle" id="VU3-lR-Oag">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VU3-lR-Oag" id="I0k-TO-do1">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IIQ-e4-OBR">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p3s-sT-Mig">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="KkU-Lg-SpT" id="pyT-Gi-5UO"/>
+                            <outlet property="delegate" destination="KkU-Lg-SpT" id="dwu-3G-SBY"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="20 recently viewed photos" id="7nt-nv-BvE"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vfX-Ug-hjZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="871" y="671"/>
         </scene>
     </scenes>
 </document>
