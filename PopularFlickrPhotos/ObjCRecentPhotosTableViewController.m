@@ -8,6 +8,7 @@
 
 #import "FlickrFetcher/FlickrFetcher.h"
 #import "ObjCRecentPhotosTableViewController.h"
+#import "PopularFlickrPhotos-Swift.h"
 
 @interface ObjCRecentPhotosTableViewController ()
 @property (strong, nonatomic) NSArray *recentPhotos;
@@ -55,14 +56,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return self.recentPhotos.count;
 }
@@ -117,7 +116,6 @@
 }
 */
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -125,7 +123,18 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([sender isKindOfClass:[UITableViewCell class]]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        if ([segue.identifier isEqualToString:@"Display Recent Photo"]) {
+            if ([segue.destinationViewController isKindOfClass:[PhotoViewController class]]) {
+                PhotoViewController *photoViewController = segue.destinationViewController;
+                NSDictionary *photo = self.recentPhotos[indexPath.row];
+                photoViewController.photoURL = [FlickrFetcher URLforPhoto:photo format:FlickrPhotoFormatLarge];
+                photoViewController.photoTitle = photo[FLICKR_PHOTO_TITLE];
+            }
+        }
+    }
 }
-*/
 
 @end

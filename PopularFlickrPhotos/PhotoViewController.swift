@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhotoViewController: UIViewController, UIScrollViewDelegate {
+@objc class PhotoViewController: UIViewController, UIScrollViewDelegate {
     var photoURL: NSURL!
     var photoTitle: String!
     @IBOutlet var scrollView : UIScrollView!

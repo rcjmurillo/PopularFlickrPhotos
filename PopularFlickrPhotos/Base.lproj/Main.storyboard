@@ -50,7 +50,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SjN-a5-9c3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1563" y="47"/>
+            <point key="canvasLocation" x="1971" y="3"/>
         </scene>
         <!--Place Photos Table View Controller-->
         <scene sceneID="KE1-m9-uVd">
@@ -97,7 +97,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xEE-kI-Uig" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2167" y="47"/>
+            <point key="canvasLocation" x="2603" y="3"/>
         </scene>
         <!--Photo View Controller-->
         <scene sceneID="Pt6-R0-QZB">
@@ -124,7 +124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q77-9D-heB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2793" y="47"/>
+            <point key="canvasLocation" x="3340" y="345"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="LSL-bd-F1y">
@@ -138,12 +138,12 @@
                     </tabBar>
                     <connections>
                         <segue destination="AqZ-I6-OWk" kind="relationship" relationship="viewControllers" id="ouv-t0-91G"/>
-                        <segue destination="KkU-Lg-SpT" kind="relationship" relationship="viewControllers" id="fuT-Va-8pp"/>
+                        <segue destination="ZsI-Ns-YbU" kind="relationship" relationship="viewControllers" id="fuT-Va-8pp"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="viS-JF-2QN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="221" y="145"/>
+            <point key="canvasLocation" x="503" y="345"/>
         </scene>
         <!--Navigation Controller - Popular Photos-->
         <scene sceneID="PUm-oj-JyU">
@@ -162,7 +162,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NkD-m8-a8X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="871" y="47"/>
+            <point key="canvasLocation" x="1307" y="3"/>
         </scene>
         <!--ObjC Recent Photos Table View Controller - 20 recently viewed photos-->
         <scene sceneID="Sm4-iG-yj6">
@@ -193,6 +193,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="YJd-ed-WOC" kind="show" identifier="Display Recent Photo" id="tvt-hw-gMz"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -200,11 +203,33 @@
                             <outlet property="delegate" destination="KkU-Lg-SpT" id="dwu-3G-SBY"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="20 recently viewed photos" id="7nt-nv-BvE"/>
+                    <navigationItem key="navigationItem" title="20 recently viewed photos" id="9ut-yE-V3r"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vfX-Ug-hjZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="871" y="671"/>
+            <point key="canvasLocation" x="2299" y="690"/>
+        </scene>
+        <!--Navigation Controller - 20 recently viewed photos-->
+        <scene sceneID="akj-oI-cxQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZsI-Ns-YbU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="20 recently viewed photos" id="7nt-nv-BvE"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JXs-NS-1Rv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KkU-Lg-SpT" kind="relationship" relationship="rootViewController" id="3lZ-nJ-AYU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HUp-tG-8X0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1647" y="690"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="tvt-hw-gMz"/>
+    </inferredMetricsTieBreakers>
 </document>

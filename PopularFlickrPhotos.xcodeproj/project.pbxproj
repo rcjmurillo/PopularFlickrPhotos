@@ -107,11 +107,11 @@
 				80CF340819564A1F00341949 /* PlacePhotosTableViewController.swift */,
 				80A7B38F19580CED00810225 /* PhotoViewController.swift */,
 				80AC087A1959496100790F87 /* RecentPhotosTableViewController.swift */,
+				6C8C0A74195C73BD008E5CA9 /* ObjCRecentPhotosTableViewController.h */,
+				6C8C0A75195C73BD008E5CA9 /* ObjCRecentPhotosTableViewController.m */,
 				6CD679E91950C06600530D0F /* Main.storyboard */,
 				6CD679EC1950C06600530D0F /* Images.xcassets */,
 				6CD679E31950C06600530D0F /* Supporting Files */,
-				6C8C0A74195C73BD008E5CA9 /* ObjCRecentPhotosTableViewController.h */,
-				6C8C0A75195C73BD008E5CA9 /* ObjCRecentPhotosTableViewController.m */,
 			);
 			path = PopularFlickrPhotos;
 			sourceTree = "<group>";
