@@ -32,11 +32,24 @@ class RecentPhotosTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        let photo = recentPhotos[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier("Recent Photo Cell", forIndexPath:indexPath) as UITableViewCell!
-        let usableCell = cell as UITableViewCell
-        usableCell.textLabel.text = photo[FLICKR_PHOTO_TITLE] as String
-        usableCell.detailTextLabel.text = photo[FLICKR_PHOTO_DESCRIPTION] as String
-        return usableCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Recent Photo Cell", forIndexPath: indexPath) as UITableViewCell!
+        let photo = recentPhotos[indexPath.row] as Dictionary<String, String>
+        cell.textLabel.text =  photo[FLICKR_PHOTO_TITLE]
+        cell.detailTextLabel.text = photo[FLICKR_PHOTO_DESCRIPTION]
+        return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+        if sender is UITableViewCell {
+            let indexPath = self.tableView.indexPathForCell(sender as UITableViewCell) as NSIndexPath
+            if segue.identifier == "Display Recent Photo" {
+                if segue.destinationViewController is PhotoViewController {
+                    let photoViewController = segue.destinationViewController as PhotoViewController
+                    let photo = self.recentPhotos[indexPath.row]
+                    photoViewController.photoURL = FlickrFetcher.URLforPhoto(photo, format:FlickrPhotoFormatLarge)
+                    photoViewController.photoTitle = photo[FLICKR_PHOTO_TITLE] as String
+                }
+            }
+        }
     }
 }

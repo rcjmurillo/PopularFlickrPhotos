@@ -26,9 +26,8 @@ class PlacePhotosTableViewController: UITableViewController {
     }
     
     func fetchPhotos() {
-        let fetchQueue = dispatch_queue_create("flickr fetch", nil)
-        dispatch_async(fetchQueue) {
-            self.refreshControl.beginRefreshing()
+        self.refreshControl.beginRefreshing()
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
             let photosUrl = FlickrFetcher.URLforPhotosInPlace(self.placeId, maxResults: 50)
             let data = NSData(contentsOfURL: photosUrl)
             let jsonResults = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
@@ -83,7 +82,9 @@ class PlacePhotosTableViewController: UITableViewController {
                         } else {
                             mutableRecentPhotos = NSMutableArray()
                         }
-                        mutableRecentPhotos.addObject(photo)
+                        if !mutableRecentPhotos.containsObject(photo) {
+                            mutableRecentPhotos.addObject(photo)
+                        }
                         // Storing the photo into NSUserDefaults
                         let userDefaults = NSUserDefaults.standardUserDefaults()
                         userDefaults.setObject(mutableRecentPhotos, forKey: recentPhotosKey)

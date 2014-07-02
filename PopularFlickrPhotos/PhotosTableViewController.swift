@@ -31,8 +31,8 @@ class PhotosTableViewController: UITableViewController {
     }
     
     func fetchPlaces() {
+        self.refreshControl.beginRefreshing()
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            self.refreshControl.beginRefreshing()
             let d = NSData(contentsOfURL: FlickrFetcher.URLforTopPlaces())
             let data = NSJSONSerialization.JSONObjectWithData(d, options:nil, error:nil) as NSDictionary
             let places = data.valueForKeyPath(FLICKR_RESULTS_PLACES) as NSDictionary[]
@@ -82,7 +82,7 @@ class PhotosTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("Place Cell", forIndexPath:indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Place Cell", forIndexPath:indexPath) as UITableViewCell!
         let place = placeForIndexPath(indexPath)
         cell.textLabel.text = place.region
         cell.detailTextLabel.text = place.county
