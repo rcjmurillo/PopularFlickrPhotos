@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AQ3-v0-03B">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AQ3-v0-03B">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
     </dependencies>
@@ -9,23 +9,26 @@
             <objects>
                 <tableViewController id="9z9-xP-Yqa" customClass="PhotosTableViewController" customModule="PopularFlickrPhotos" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="o38-hx-2fu">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Place Cell" textLabel="Tcf-pC-Hxt" detailTextLabel="2F1-lD-kqY" style="IBUITableViewCellStyleSubtitle" id="Z8d-uq-1nw">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z8d-uq-1nw" id="CiM-1Y-JNc">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tcf-pC-Hxt">
+                                            <rect key="frame" x="15" y="5" width="31" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2F1-lD-kqY">
+                                            <rect key="frame" x="15" y="25" width="40" height="14"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -38,9 +41,6 @@
                                 </connections>
                             </tableViewCell>
                         </prototypes>
-                        <variation key="widthClass=compact" ambiguous="YES">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        </variation>
                         <connections>
                             <outlet property="dataSource" destination="9z9-xP-Yqa" id="kCN-tH-YtH"/>
                             <outlet property="delegate" destination="9z9-xP-Yqa" id="4Mk-vc-ujh"/>
@@ -58,25 +58,28 @@
         <!--Place Photos Table View Controller-->
         <scene sceneID="KE1-m9-uVd">
             <objects>
-                <tableViewController id="StJ-dL-Zct" customClass="PlacePhotosTableViewController" customModule="PopularFlickrPhotos" sceneMemberID="viewController">
+                <tableViewController id="StJ-dL-Zct" customClass="PlacePhotosTableViewController" customModule="PopularFlickrPhotos" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Whu-Nv-BKL">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Photo Cell" textLabel="7ml-kQ-W5t" detailTextLabel="NRm-RC-yxd" style="IBUITableViewCellStyleSubtitle" id="H3a-JW-5RY">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="H3a-JW-5RY" id="XRP-bM-261">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7ml-kQ-W5t">
+                                            <rect key="frame" x="15" y="5" width="31" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NRm-RC-yxd">
+                                            <rect key="frame" x="15" y="25" width="40" height="14"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -85,13 +88,10 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="YJd-ed-WOC" kind="show" identifier="Display Photo" id="sYs-9P-iUn"/>
+                                    <segue destination="YJd-ed-WOC" kind="push" identifier="Display Photo" id="sYs-9P-iUn"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
-                        <variation key="widthClass=compact" ambiguous="YES">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        </variation>
                         <connections>
                             <outlet property="dataSource" destination="StJ-dL-Zct" id="izb-Ov-Mde"/>
                             <outlet property="delegate" destination="StJ-dL-Zct" id="Chl-LN-ktj"/>
@@ -115,18 +115,14 @@
                         <viewControllerLayoutGuide type="bottom" id="QI7-fG-rDy"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fzb-XM-DUH">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xg5-w4-aH8">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                </variation>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <connections>
                         <outlet property="scrollView" destination="Xg5-w4-aH8" id="fOQ-54-MEo"/>
@@ -178,44 +174,39 @@
         <scene sceneID="CCu-kZ-DXV">
             <objects>
                 <tableViewController id="iSh-Pg-Sgo" customClass="RecentPhotosTableViewController" customModule="PopularFlickrPhotos" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="vin-u6-HrG">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="vin-u6-HrG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Recent Photo Cell" textLabel="WWf-jy-Pta" detailTextLabel="ixU-RM-RL8" style="IBUITableViewCellStyleSubtitle" id="vKK-u9-lFY">
+                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Recent Photo Cell" textLabel="WWf-jy-Pta" detailTextLabel="ixU-RM-RL8" style="IBUITableViewCellStyleSubtitle" id="vKK-u9-lFY">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vKK-u9-lFY" id="NbB-dg-YDG">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WWf-jy-Pta">
+                                            <rect key="frame" x="15" y="1" width="33" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
-                                            <variation key="widthClass=compact">
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            </variation>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ixU-RM-RL8">
+                                            <rect key="frame" x="15" y="22" width="59" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
-                                            <variation key="widthClass=compact">
-                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            </variation>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="YJd-ed-WOC" kind="show" identifier="Display Recent Photo" id="8zS-0y-tiN"/>
+                                    <segue destination="YJd-ed-WOC" kind="push" identifier="Display Recent Photo" id="8zS-0y-tiN"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
-                        <variation key="widthClass=compact" ambiguous="YES">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        </variation>
                         <connections>
                             <outlet property="dataSource" destination="iSh-Pg-Sgo" id="zma-oM-dmC"/>
                             <outlet property="delegate" destination="iSh-Pg-Sgo" id="Ylv-8E-Qpb"/>
@@ -247,7 +238,12 @@
             <point key="canvasLocation" x="1573.5" y="698"/>
         </scene>
     </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="8zS-0y-tiN"/>
+        <segue reference="sYs-9P-iUn"/>
     </inferredMetricsTieBreakers>
 </document>
