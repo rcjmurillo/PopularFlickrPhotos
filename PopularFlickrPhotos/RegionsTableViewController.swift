@@ -18,23 +18,12 @@ class RegionsTableViewController: CoreDataTableViewController {
             let data = NSJSONSerialization.JSONObjectWithData(d, options:nil, error:nil) as NSDictionary
             let photos: NSDictionary[] = data.valueForKeyPath(FLICKR_RESULTS_PHOTOS) as NSDictionary[]
             println("Getting \(photos.count) photos")
-            
-            CoreDataHelper.fetchManagedDocument { (document: UIManagedDocument) in
-                switch document.documentState {
-                    case UIDocumentState.Normal:
-                        println("Document ready to be used")
-                        self.document = document
-                        let context = document.managedObjectContext
-                        context.performBlock {
-                            for photo in photos {
-                                Photo.createFromFlickrData(photo, inManagedObjectContext: context)
-                            }
-                        }
-                    default:
-                        println("Document in state \(document.documentState)")
+            let context = self.document.managedObjectContext
+            context.performBlock {
+                for photo in photos {
+                    Photo.createFromFlickrData(photo, inManagedObjectContext: context)
                 }
             }
-
             dispatch_async(dispatch_get_main_queue()) {
                 self.refreshControl.endRefreshing()
             }
@@ -47,16 +36,9 @@ class RegionsTableViewController: CoreDataTableViewController {
             NSSortDescriptor(key: "photographerCount", ascending: false),
             NSSortDescriptor(key: "name", ascending: true)
         ]
-        CoreDataHelper.fetchManagedDocument { (document: UIManagedDocument) in
-            switch document.documentState {
-                case UIDocumentState.Normal:
-                    let context = document.managedObjectContext
-                    context.performBlock {
-                        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-                    }
-                default:
-                    println("Document in state \(document.documentState)")
-            }
+        let context = document.managedObjectContext
+        context.performBlock {
+            self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         }
     }
     
@@ -66,7 +48,18 @@ class RegionsTableViewController: CoreDataTableViewController {
         var refresh = UIRefreshControl()
         refresh.addTarget(self, action: "fetchPhotos", forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = refresh
-        fetchRegions()
+        
+        CoreDataHelper.fetchManagedDocument { (document: UIManagedDocument) in
+            switch document.documentState {
+            case UIDocumentState.Normal:
+                self.document = document
+                self.fetchRegions()
+            default:
+                println("Document in state \(document.documentState)")
+            }
+        }
+        
+
     }
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
@@ -83,7 +76,8 @@ class RegionsTableViewController: CoreDataTableViewController {
                 if segue.identifier == "Display Photos" {
                     if segue.destinationViewController is RegionPhotosTableViewController {
                         let photosViewController = segue.destinationViewController as RegionPhotosTableViewController
-                        // TODO: Set the place id
+                        photosViewController.managedObjectContext = self.document.managedObjectContext
+                        photosViewController.region = fetchedResultsController.objectAtIndexPath(indexPath) as Region
                     }
                 }
             }

@@ -32,7 +32,6 @@ extension Photo {
                 
                 let photographerName = photoData.valueForKey(FLICKR_PHOTO_OWNER) as String
                 let photographerData = Photographer.createWithName(photographerName, inManagedObjectContext: context)
-                println(photographerData)
                 photo.photographer = photographerData.photographer
                 let regionData = NSData(contentsOfURL: FlickrFetcher.URLforInformationAboutPlace(photoData[FLICKR_PLACE_ID]))
                 let regionJSONData = NSJSONSerialization.JSONObjectWithData(regionData, options:nil, error:nil) as NSDictionary

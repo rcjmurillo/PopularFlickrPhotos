@@ -20,7 +20,6 @@ extension Photographer {
         
         if !matches || error || matches.count > 1 {
             // Handle the error
-            println("Some error happened")
         } else if matches.count == 1 {
             photographer = matches[0] as Photographer
         } else {
