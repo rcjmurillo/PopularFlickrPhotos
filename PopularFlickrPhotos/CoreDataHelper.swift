@@ -7,33 +7,32 @@
 //
 
 class CoreDataHelper {
-    class func fetchManagedObjectContext(completionHandler: (NSManagedObjectContext!) -> Void) {
+    class func fetchManagedDocument(completionHandler: (UIManagedDocument) -> Void) {
         var delegate = UIApplication.sharedApplication().delegate as AppDelegate
-        if delegate.managedObjectContext {
-            completionHandler(delegate.managedObjectContext)
+        if delegate.document {
+            completionHandler(delegate.document)
         }
         let fileManager = NSFileManager.defaultManager()
         let documentDirectory = fileManager.URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask)[0] as NSURL
         let url = documentDirectory.URLByAppendingPathComponent("FlickrDatabase")
         let document: UIManagedDocument = UIManagedDocument(fileURL: url)
-        let fileExists = NSFileManager.defaultManager().fileExistsAtPath(url.path)
         let documentReadyHandler: (Bool) -> Void = { (success: Bool) in
             if (success) {
-                delegate.managedObjectContext = document.managedObjectContext
-                completionHandler(document.managedObjectContext)
+                delegate.document = document
+                completionHandler(document)
             } else {
                 println("File could not be opened or created")
             }
         }
-        if fileExists {
+        if NSFileManager.defaultManager().fileExistsAtPath(url.path) {
             document.openWithCompletionHandler(documentReadyHandler)
         } else {
             document.saveToURL(url, forSaveOperation: UIDocumentSaveOperation.ForCreating, completionHandler: documentReadyHandler)
         }
     }
     
-    class func managedObjectContext() -> NSManagedObjectContext! {
+    class func managedDocument() -> UIManagedDocument {
         var delegate = UIApplication.sharedApplication().delegate as AppDelegate
-        return delegate.managedObjectContext
+        return delegate.document
     }
 }

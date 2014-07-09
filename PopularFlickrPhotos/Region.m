@@ -1,18 +1,18 @@
 //
-//  Photographer.m
+//  Region.m
 //  PopularFlickrPhotos
 //
-//  Created by Ricardo Murillo on 7/5/14.
+//  Created by Ricardo Murillo on 7/8/14.
 //  Copyright (c) 2014 Ricardo Murillo. All rights reserved.
 //
 
-#import "Photographer.h"
+#import "Region.h"
+#import "Photo.h"
 
 
-@implementation Photographer
+@implementation Region
 
 @dynamic name;
-@dynamic region;
 @dynamic photos;
 
 @end
