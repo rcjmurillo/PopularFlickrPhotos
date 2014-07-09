@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class PlacePhotosTableViewController: UITableViewController {
+class RegionPhotosTableViewController: UITableViewController {
     var placeId: AnyObject!
     var photos: NSDictionary[]! {
     didSet {

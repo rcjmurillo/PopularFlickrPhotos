@@ -17,12 +17,12 @@ extension Photo {
         
         context.performBlock {
             var error: NSErrorPointer!
-            let photos = context.executeFetchRequest(request, error: error) as Photo[]!
+            let matches = context.executeFetchRequest(request, error: error)
             
-            if !photos || error || photos.count > 1 {
+            if !matches || error || matches.count > 1 {
                 // Handle the error
-            } else if photos.count == 1 {
-                photo = photos[0]
+            } else if matches.count == 1 {
+                photo = matches[0] as Photo
             } else {
                 photo = NSEntityDescription.insertNewObjectForEntityForName("Photo", inManagedObjectContext: context) as Photo
                 photo.title = photoData[FLICKR_PHOTO_TITLE] as String
@@ -31,12 +31,16 @@ extension Photo {
                 photo.imageURL = FlickrFetcher.URLforPhoto(photoData, format: FlickrPhotoFormatLarge).absoluteString
                 
                 let photographerName = photoData.valueForKey(FLICKR_PHOTO_OWNER) as String
-                photo.photographer = Photographer.createWithName(photographerName, inManagedObjectContext: context)
-                
+                let photographerData = Photographer.createWithName(photographerName, inManagedObjectContext: context)
+                println(photographerData)
+                photo.photographer = photographerData.photographer
                 let regionData = NSData(contentsOfURL: FlickrFetcher.URLforInformationAboutPlace(photoData[FLICKR_PLACE_ID]))
                 let regionJSONData = NSJSONSerialization.JSONObjectWithData(regionData, options:nil, error:nil) as NSDictionary
                 let regionName = FlickrFetcher.extractRegionNameFromPlaceInformation(regionJSONData)
                 photo.region = Region.createWithName(regionName, inManagedObjectContext: context)
+                if photographerData.isNew {
+                    photo.region.photographerCount = photo.region.photographerCount.integerValue + 1
+                }
             }
         }
         return photo

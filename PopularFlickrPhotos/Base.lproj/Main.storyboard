@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AQ3-v0-03B">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AQ3-v0-03B">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
     </dependencies>
     <scenes>
-        <!--Photos Table View Controller - Popular Photos-->
+        <!--Regions Table View Controller - Popular Regions-->
         <scene sceneID="Qcm-st-3f4">
             <objects>
-                <tableViewController id="9z9-xP-Yqa" customClass="PhotosTableViewController" customModule="PopularFlickrPhotos" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="o38-hx-2fu">
+                <tableViewController id="9z9-xP-Yqa" customClass="RegionsTableViewController" customModule="PopularFlickrPhotos" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="o38-hx-2fu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Place Cell" textLabel="Tcf-pC-Hxt" detailTextLabel="2F1-lD-kqY" style="IBUITableViewCellStyleSubtitle" id="Z8d-uq-1nw">
+                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Region Cell" textLabel="Tcf-pC-Hxt" detailTextLabel="2F1-lD-kqY" style="IBUITableViewCellStyleSubtitle" id="Z8d-uq-1nw">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z8d-uq-1nw" id="CiM-1Y-JNc">
@@ -46,7 +46,7 @@
                             <outlet property="delegate" destination="9z9-xP-Yqa" id="4Mk-vc-ujh"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Popular Photos" id="cj4-Da-zsn"/>
+                    <navigationItem key="navigationItem" title="Popular Regions" id="cj4-Da-zsn"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="k6B-GU-GJW">
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
@@ -55,11 +55,11 @@
             </objects>
             <point key="canvasLocation" x="1959" y="3"/>
         </scene>
-        <!--Place Photos Table View Controller-->
+        <!--Region Photos Table View Controller-->
         <scene sceneID="KE1-m9-uVd">
             <objects>
-                <tableViewController id="StJ-dL-Zct" customClass="PlacePhotosTableViewController" customModule="PopularFlickrPhotos" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Whu-Nv-BKL">
+                <tableViewController id="StJ-dL-Zct" customClass="RegionPhotosTableViewController" customModule="PopularFlickrPhotos" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Whu-Nv-BKL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -174,7 +174,7 @@
         <scene sceneID="CCu-kZ-DXV">
             <objects>
                 <tableViewController id="iSh-Pg-Sgo" customClass="RecentPhotosTableViewController" customModule="PopularFlickrPhotos" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="vin-u6-HrG">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="vin-u6-HrG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -33,9 +33,9 @@ class RecentPhotosTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         let cell = tableView.dequeueReusableCellWithIdentifier("Recent Photo Cell", forIndexPath: indexPath) as UITableViewCell!
-        let photo = recentPhotos[indexPath.row] as Dictionary<String, String>
-        cell.textLabel.text =  photo[FLICKR_PHOTO_TITLE]
-        cell.detailTextLabel.text = photo[FLICKR_PHOTO_DESCRIPTION]
+        let photo = recentPhotos[indexPath.row] as NSDictionary
+        cell.textLabel.text =  photo[FLICKR_PHOTO_TITLE] as String
+        cell.detailTextLabel.text = photo[FLICKR_PHOTO_DESCRIPTION] as String
         return cell
     }
     

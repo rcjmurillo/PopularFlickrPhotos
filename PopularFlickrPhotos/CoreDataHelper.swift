@@ -14,7 +14,7 @@ class CoreDataHelper {
         }
         let fileManager = NSFileManager.defaultManager()
         let documentDirectory = fileManager.URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask)[0] as NSURL
-        let url = documentDirectory.URLByAppendingPathComponent("FlickrDatabase")
+        let url = documentDirectory.URLByAppendingPathComponent("FlickrDatabase.md")
         let document: UIManagedDocument = UIManagedDocument(fileURL: url)
         let documentReadyHandler: (Bool) -> Void = { (success: Bool) in
             if (success) {

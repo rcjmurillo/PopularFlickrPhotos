@@ -7,40 +7,31 @@
 //
 import UIKit
 
-class PhotosTableViewController: CoreDataTableViewController {
-    func fetchPlaces() {
+class RegionsTableViewController: CoreDataTableViewController {
+    var document: UIManagedDocument!
+    
+    func fetchPhotos() {
         self.refreshControl.beginRefreshing()
         var regionsName = String[]()
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
             let d = NSData(contentsOfURL: FlickrFetcher.URLforRecentGeoreferencedPhotos())
             let data = NSJSONSerialization.JSONObjectWithData(d, options:nil, error:nil) as NSDictionary
             let photos: NSDictionary[] = data.valueForKeyPath(FLICKR_RESULTS_PHOTOS) as NSDictionary[]
-            println("Getting \(photos.count) regions")
-            println(photos)
-            for photo in photos {
-                // Fetching the region data from Flickr
-                // photographer data: owner, ownername
-                let regionData = NSData(contentsOfURL: FlickrFetcher.URLforInformationAboutPlace(photo[FLICKR_PLACE_ID]))
-                let regionJSONData = NSJSONSerialization.JSONObjectWithData(regionData, options:nil, error:nil) as NSDictionary
-                let regionName = FlickrFetcher.extractRegionNameFromPlaceInformation(regionJSONData)
-                println("Getting region \(regionName)")
-                regionsName.append(regionName)
-            }
-            println("Saving regions")
+            println("Getting \(photos.count) photos")
+            
             CoreDataHelper.fetchManagedDocument { (document: UIManagedDocument) in
-                for regionName in regionsName {
-                    switch document.documentState {
+                switch document.documentState {
                     case UIDocumentState.Normal:
                         println("Document ready to be used")
+                        self.document = document
                         let context = document.managedObjectContext
                         context.performBlock {
-                            let region = NSEntityDescription.insertNewObjectForEntityForName("Region", inManagedObjectContext: context) as Region
-                            region.name = regionName
-                            println("Region \(region.name) saved")
+                            for photo in photos {
+                                Photo.createFromFlickrData(photo, inManagedObjectContext: context)
+                            }
                         }
                     default:
                         println("Document in state \(document.documentState)")
-                    }
                 }
             }
 
@@ -53,7 +44,7 @@ class PhotosTableViewController: CoreDataTableViewController {
     func fetchRegions () {
         let fetchRequest = NSFetchRequest(entityName: "Region")
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: "photographers.@count", ascending: true),
+            NSSortDescriptor(key: "photographerCount", ascending: false),
             NSSortDescriptor(key: "name", ascending: true)
         ]
         CoreDataHelper.fetchManagedDocument { (document: UIManagedDocument) in
@@ -73,16 +64,16 @@ class PhotosTableViewController: CoreDataTableViewController {
         super.viewDidLoad()
         self.debug = true
         var refresh = UIRefreshControl()
-        refresh.addTarget(self, action: "fetchPlaces", forControlEvents: UIControlEvents.ValueChanged)
+        refresh.addTarget(self, action: "fetchPhotos", forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = refresh
         fetchRegions()
     }
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        println("Getting cell")
-        let cell = tableView.dequeueReusableCellWithIdentifier("Place Cell", forIndexPath:indexPath) as UITableViewCell!
+        let cell = tableView.dequeueReusableCellWithIdentifier("Region Cell", forIndexPath:indexPath) as UITableViewCell!
         let region = fetchedResultsController.objectAtIndexPath(indexPath) as Region
         cell.textLabel.text = region.name
+        cell.detailTextLabel.text = "\(region.photographerCount) photographers"
         return cell
     }
     
@@ -90,8 +81,9 @@ class PhotosTableViewController: CoreDataTableViewController {
         if sender is UITableViewCell {
             if let indexPath = self.tableView.indexPathForCell(sender as UITableViewCell) {
                 if segue.identifier == "Display Photos" {
-                    if segue.destinationViewController is PlacePhotosTableViewController {
-                        
+                    if segue.destinationViewController is RegionPhotosTableViewController {
+                        let photosViewController = segue.destinationViewController as RegionPhotosTableViewController
+                        // TODO: Set the place id
                     }
                 }
             }

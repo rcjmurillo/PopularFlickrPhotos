@@ -9,8 +9,25 @@
 import UIKit
 
 extension Photographer {
-    class func createWithName(name: String, inManagedObjectContext context: NSManagedObjectContext) -> Photographer! {
+    class func createWithName(name: String, inManagedObjectContext context: NSManagedObjectContext) -> (photographer: Photographer!, isNew: Bool) {
+        var photographer: Photographer!
+        var isNew = false
+        var request = NSFetchRequest(entityName: "Photographer")
+        request.predicate = NSPredicate(format: "name = %@", name)
+       
+        var error: NSErrorPointer!
+        let matches = context.executeFetchRequest(request, error: error)
         
-        return nil
+        if !matches || error || matches.count > 1 {
+            // Handle the error
+            println("Some error happened")
+        } else if matches.count == 1 {
+            photographer = matches[0] as Photographer
+        } else {
+            photographer = NSEntityDescription.insertNewObjectForEntityForName("Photographer", inManagedObjectContext: context) as Photographer
+            photographer.name = name
+            isNew = true
+        }
+        return (photographer, isNew)
     }
 }
