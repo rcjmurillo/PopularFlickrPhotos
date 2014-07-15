@@ -10,32 +10,42 @@ import UIKit
 
 let recentPhotosKey = "Recent Photos"
 
-class RecentPhotosTableViewController: UITableViewController {
-    var recentPhotos: NSDictionary[] {
-        let photos = NSUserDefaults.standardUserDefaults().arrayForKey(recentPhotosKey)
-        if !photos {
-            return NSDictionary[]()
-        }
-        return photos as NSDictionary[]
+class RecentPhotosTableViewController: CoreDataTableViewController {
+    var document: UIManagedDocument!
+    func fetchRecentPhotos() {
+        let request = NSFetchRequest(entityName: "Photo")
+        request.sortDescriptors = [NSSortDescriptor(key: "recentOrder", ascending: false)]
+        request.predicate = NSPredicate(format: "recentOrder > 0")
+        request.fetchLimit = 20
+        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: document.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        println("fetchedResultsController set")
     }
     
     override func viewDidLoad()  {
         super.viewDidLoad()
+        
+        CoreDataHelper.fetchManagedDocument { (document: UIManagedDocument) in
+            switch document.documentState {
+            case UIDocumentState.Normal:
+                self.document = document
+            default:
+                println("Document in state \(document.documentState)")
+            }
+        }
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
-        return 1
-    }
-    
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-        return recentPhotos.count
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if document {
+            self.fetchRecentPhotos()
+        }
     }
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         let cell = tableView.dequeueReusableCellWithIdentifier("Recent Photo Cell", forIndexPath: indexPath) as UITableViewCell!
-        let photo = recentPhotos[indexPath.row] as NSDictionary
-        cell.textLabel.text =  photo[FLICKR_PHOTO_TITLE] as String
-        cell.detailTextLabel.text = photo[FLICKR_PHOTO_DESCRIPTION] as String
+        let photo = fetchedResultsController.objectAtIndexPath(indexPath) as Photo
+        cell.textLabel.text =  photo.title
+        cell.detailTextLabel.text = photo.subtitle
         return cell
     }
     
@@ -45,9 +55,9 @@ class RecentPhotosTableViewController: UITableViewController {
             if segue.identifier == "Display Recent Photo" {
                 if segue.destinationViewController is PhotoViewController {
                     let photoViewController = segue.destinationViewController as PhotoViewController
-                    let photo = self.recentPhotos[indexPath.row]
-                    photoViewController.photoURL = FlickrFetcher.URLforPhoto(photo, format:FlickrPhotoFormatLarge)
-                    photoViewController.photoTitle = photo[FLICKR_PHOTO_TITLE] as String
+                    let photo = fetchedResultsController.objectAtIndexPath(indexPath) as Photo
+                    photoViewController.photoURL = NSURL(string: photo.imageURL)
+                    photoViewController.photoTitle = photo.title
                 }
             }
         }

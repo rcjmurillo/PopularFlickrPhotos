@@ -8,6 +8,6 @@
 
 #import "FlickrFetcher.h"
 #import "CoreDataTableViewController.h"
-#import "Region.h"
-#import "Photographer.h"
 #import "Photo.h"
+#import "Photographer.h"
+#import "Region.h"

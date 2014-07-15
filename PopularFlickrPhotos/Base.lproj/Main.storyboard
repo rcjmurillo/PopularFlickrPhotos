@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AQ3-v0-03B">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AQ3-v0-03B">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
     </dependencies>
     <scenes>
-        <!--Regions Table View Controller - Popular Regions-->
+        <!--Popular Regions-->
         <scene sceneID="Qcm-st-3f4">
             <objects>
                 <tableViewController id="9z9-xP-Yqa" customClass="RegionsTableViewController" customModule="PopularFlickrPhotos" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="o38-hx-2fu">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="o38-hx-2fu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -59,7 +59,7 @@
         <scene sceneID="KE1-m9-uVd">
             <objects>
                 <tableViewController id="StJ-dL-Zct" customClass="RegionPhotosTableViewController" customModule="PopularFlickrPhotos" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Whu-Nv-BKL">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Whu-Nv-BKL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -151,7 +151,7 @@
             </objects>
             <point key="canvasLocation" x="559.5" y="339"/>
         </scene>
-        <!--Navigation Controller - Popular Photos-->
+        <!--Popular Photos-->
         <scene sceneID="PUm-oj-JyU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AqZ-I6-OWk" sceneMemberID="viewController">
@@ -170,11 +170,11 @@
             </objects>
             <point key="canvasLocation" x="1307" y="3"/>
         </scene>
-        <!--Recent Photos Table View Controller-->
+        <!--Recent photos-->
         <scene sceneID="CCu-kZ-DXV">
             <objects>
                 <tableViewController id="iSh-Pg-Sgo" customClass="RecentPhotosTableViewController" customModule="PopularFlickrPhotos" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="vin-u6-HrG">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="vin-u6-HrG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -212,17 +212,17 @@
                             <outlet property="delegate" destination="iSh-Pg-Sgo" id="Ylv-8E-Qpb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="t6X-ae-Vi0"/>
+                    <navigationItem key="navigationItem" title="Recent photos" id="t6X-ae-Vi0"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Vq-NY-gaF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2374.5" y="698"/>
         </scene>
-        <!--Navigation Controller - 20 recently viewed photos-->
+        <!--Recent photos-->
         <scene sceneID="vbQ-XV-MDW">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PDx-A0-8M3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="20 recently viewed photos" id="Myr-g5-vb3"/>
+                    <tabBarItem key="tabBarItem" title="Recent photos" id="Myr-g5-vb3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="M7G-H2-He2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -241,9 +241,12 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
+        <simulatedScreenMetrics key="destination">
+            <size key="portraitSize" width="320" height="480"/>
+            <size key="landscapeSize" width="480" height="320"/>
+        </simulatedScreenMetrics>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="sYs-9P-iUn"/>
+        <segue reference="8zS-0y-tiN"/>
     </inferredMetricsTieBreakers>
 </document>

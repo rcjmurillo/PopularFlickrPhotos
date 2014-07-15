@@ -12,10 +12,9 @@ extension Region {
         var request = NSFetchRequest(entityName: "Region")
         request.predicate = NSPredicate(format: "name = %@", name)
         
-        var error: NSErrorPointer!
-        let matches = context.executeFetchRequest(request, error: error)
+        let matches = context.executeFetchRequest(request, error: nil)
         
-        if !matches || error || matches.count > 1 {
+        if !matches || matches.count > 1 {
             // Handle the error
         } else if matches.count == 1 {
             region = matches[0] as Region

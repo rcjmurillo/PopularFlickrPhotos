@@ -19,9 +19,10 @@ class RegionPhotosTableViewController: CoreDataTableViewController {
     func fetchPhotos() {
         let request = NSFetchRequest(entityName: "Photo")
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        request.predicate = NSPredicate(format: "region == %@", region)
         self.fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
     }
-
+    
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         let cell = tableView.dequeueReusableCellWithIdentifier("Photo Cell", forIndexPath:indexPath) as UITableViewCell!
         let photo = fetchedResultsController.objectAtIndexPath(indexPath) as Photo
@@ -37,22 +38,12 @@ class RegionPhotosTableViewController: CoreDataTableViewController {
                     if segue.destinationViewController is PhotoViewController {
                         let photoViewController = segue.destinationViewController as PhotoViewController
                         let photo = fetchedResultsController.objectAtIndexPath(indexPath) as Photo
+                        managedObjectContext.performBlock {
+                            photo.recentOrder = photo.recentOrder.integerValue + 1
+                            self.managedObjectContext.save(nil)
+                        }
                         photoViewController.photoURL = NSURL(string: photo.imageURL)
                         photoViewController.photoTitle = photo.title
-                        
-                        var mutableRecentPhotos: NSMutableArray
-                        if let recentPhotos = NSUserDefaults.standardUserDefaults().arrayForKey(recentPhotosKey) as NSArray! {
-                            mutableRecentPhotos = recentPhotos.mutableCopy() as NSMutableArray
-                        } else {
-                            mutableRecentPhotos = NSMutableArray()
-                        }
-                        if !mutableRecentPhotos.containsObject(photo) {
-                            mutableRecentPhotos.addObject(photo)
-                        }
-                        // Storing the photo into NSUserDefaults
-                        let userDefaults = NSUserDefaults.standardUserDefaults()
-                        userDefaults.setObject(mutableRecentPhotos, forKey: recentPhotosKey)
-                        userDefaults.synchronize()
                     }
                 }
             }

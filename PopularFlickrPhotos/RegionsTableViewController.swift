@@ -12,20 +12,23 @@ class RegionsTableViewController: CoreDataTableViewController {
     
     func fetchPhotos() {
         self.refreshControl.beginRefreshing()
-        var regionsName = String[]()
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
             let d = NSData(contentsOfURL: FlickrFetcher.URLforRecentGeoreferencedPhotos())
             let data = NSJSONSerialization.JSONObjectWithData(d, options:nil, error:nil) as NSDictionary
-            let photos: NSDictionary[] = data.valueForKeyPath(FLICKR_RESULTS_PHOTOS) as NSDictionary[]
+            let photos: [NSDictionary] = data.valueForKeyPath(FLICKR_RESULTS_PHOTOS) as [NSDictionary]
             println("Getting \(photos.count) photos")
-            let context = self.document.managedObjectContext
-            context.performBlock {
-                for photo in photos {
-                    Photo.createFromFlickrData(photo, inManagedObjectContext: context)
-                }
-            }
             dispatch_async(dispatch_get_main_queue()) {
                 self.refreshControl.endRefreshing()
+                self.savePhotos(photos)
+            }
+        }
+    }
+    
+    func savePhotos(photos: [NSDictionary]) {
+        let context = self.document.managedObjectContext
+        context.performBlock {
+            for photo in photos {
+                Photo.createFromFlickrData(photo, inManagedObjectContext: context)
             }
         }
     }
@@ -44,7 +47,7 @@ class RegionsTableViewController: CoreDataTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.debug = true
+//        self.debug = true
         var refresh = UIRefreshControl()
         refresh.addTarget(self, action: "fetchPhotos", forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = refresh
