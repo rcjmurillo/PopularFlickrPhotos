@@ -43,27 +43,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication!, performFetchWithCompletionHandler completionHandler: ((UIBackgroundFetchResult) -> Void)!) {
-        CoreDataHelper.fetchManagedDocument { (document: UIManagedDocument) in
-            switch document.documentState {
-            case UIDocumentState.Normal:
-                self.document = document
-                println("Getting data in background")
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-                    let photos = FlickrFetcher.recentGeoreferencedPhotosWithPlaceInformation() as [NSDictionary]
-                    let context = document.managedObjectContext
-                    context.performBlock {
-                        let request = NSFetchRequest(entityName: "Photo")
-                        let photoCount = context.countForFetchRequest(request, error: nil)
-                        for photo in photos {
-                            Photo.createFromFlickrData(photo, inManagedObjectContext: context)
-                        }
-                        let photoCountAfterSave = context.countForFetchRequest(request, error: nil)
-                        completionHandler(photoCount == photoCountAfterSave ? UIBackgroundFetchResult.NoData: UIBackgroundFetchResult.NewData)
-                    }
-
+        println("Doing fetch")
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+            let photos = FlickrFetcher.recentGeoreferencedPhotosWithPlaceInformation() as [NSDictionary]
+            let context = self.document.managedObjectContext
+            context.performBlock {
+                let request = NSFetchRequest(entityName: "Photo")
+                let photoCount = context.countForFetchRequest(request, error: nil)
+                for photo in photos {
+                    Photo.createFromFlickrData(photo, inManagedObjectContext: context)
                 }
-            default:
-                println("Document in state \(document.documentState)")
+                let photoCountAfterSave = context.countForFetchRequest(request, error: nil)
+                completionHandler(photoCount == photoCountAfterSave ? UIBackgroundFetchResult.NoData: UIBackgroundFetchResult.NewData)
+                println("Finished")
             }
         }
     }

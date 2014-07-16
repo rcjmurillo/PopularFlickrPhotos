@@ -28,7 +28,12 @@ extension Photo {
             let photographerName = photoData.valueForKey(FLICKR_PHOTO_OWNER) as String
             let photographerData = Photographer.createWithName(photographerName, inManagedObjectContext: context)
             photo.photographer = photographerData.photographer
-            let regionName = FlickrFetcher.extractRegionNameFromPlaceInformation(photoData[FLICKR_PLACE_INFORMATION] as NSDictionary) as String
+            let placeInformation = photoData[FLICKR_PLACE_INFORMATION] as NSDictionary
+            let regionName = FlickrFetcher.extractRegionNameFromPlaceInformation(placeInformation) as String!
+            if !regionName {
+                println(regionName)
+                println(placeInformation)
+            }
             context.performBlock {
                 photo.region = Region.createWithName(regionName, inManagedObjectContext: context)
                 if photographerData.isNew {

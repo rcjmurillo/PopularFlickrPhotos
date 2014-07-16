@@ -2,7 +2,7 @@
 //  Photo.m
 //  PopularFlickrPhotos
 //
-//  Created by Ricardo Murillo on 7/13/14.
+//  Created by Ricardo Murillo on 7/16/14.
 //  Copyright (c) 2014 Ricardo Murillo. All rights reserved.
 //
 
@@ -18,6 +18,7 @@
 @dynamic subtitle;
 @dynamic title;
 @dynamic unique;
+@dynamic imageData;
 @dynamic photographer;
 @dynamic region;
 
