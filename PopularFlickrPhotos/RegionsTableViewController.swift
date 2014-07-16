@@ -10,29 +10,6 @@ import UIKit
 class RegionsTableViewController: CoreDataTableViewController {
     var document: UIManagedDocument!
     
-    func fetchPhotos() {
-        self.refreshControl.beginRefreshing()
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-            let d = NSData(contentsOfURL: FlickrFetcher.URLforRecentGeoreferencedPhotos())
-            let data = NSJSONSerialization.JSONObjectWithData(d, options:nil, error:nil) as NSDictionary
-            let photos: [NSDictionary] = data.valueForKeyPath(FLICKR_RESULTS_PHOTOS) as [NSDictionary]
-            println("Getting \(photos.count) photos")
-            dispatch_async(dispatch_get_main_queue()) {
-                self.refreshControl.endRefreshing()
-                self.savePhotos(photos)
-            }
-        }
-    }
-    
-    func savePhotos(photos: [NSDictionary]) {
-        let context = self.document.managedObjectContext
-        context.performBlock {
-            for photo in photos {
-                Photo.createFromFlickrData(photo, inManagedObjectContext: context)
-            }
-        }
-    }
-    
     func fetchRegions () {
         let fetchRequest = NSFetchRequest(entityName: "Region")
         fetchRequest.sortDescriptors = [

@@ -18,6 +18,7 @@
 #define FLICKR_PHOTO_OWNER @"ownername"
 #define FLICKR_PHOTO_UPLOAD_DATE @"dateupload" // in seconds since 1970
 #define FLICKR_PHOTO_PLACE_ID @"place_id"
+#define FLICKR_PLACE_INFORMATION @"place"
 
 // keys (paths) to values in a places dictionary (from TopPlaces)
 #define FLICKR_PLACE_NAME @"_content"
@@ -48,5 +49,5 @@ typedef enum {
 
 + (NSString *)extractNameOfPlace:(id)placeId fromPlaceInformation:(NSDictionary *)place;
 + (NSString *)extractRegionNameFromPlaceInformation:(NSDictionary *)placeInformation;
-
++ (NSArray *)recentGeoreferencedPhotosWithPlaceInformation;
 @end

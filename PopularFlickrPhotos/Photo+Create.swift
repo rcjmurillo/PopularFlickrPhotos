@@ -28,15 +28,11 @@ extension Photo {
             let photographerName = photoData.valueForKey(FLICKR_PHOTO_OWNER) as String
             let photographerData = Photographer.createWithName(photographerName, inManagedObjectContext: context)
             photo.photographer = photographerData.photographer
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-                let regionData = NSData(contentsOfURL: FlickrFetcher.URLforInformationAboutPlace(photoData[FLICKR_PLACE_ID]))
-                let regionJSONData = NSJSONSerialization.JSONObjectWithData(regionData, options:nil, error:nil) as NSDictionary
-                let regionName = FlickrFetcher.extractRegionNameFromPlaceInformation(regionJSONData)
-                context.performBlock {
-                    photo.region = Region.createWithName(regionName, inManagedObjectContext: context)
-                    if photographerData.isNew {
-                        photo.region.photographerCount = photo.region.photographerCount.integerValue + 1
-                    }
+            let regionName = FlickrFetcher.extractRegionNameFromPlaceInformation(photoData[FLICKR_PLACE_INFORMATION] as NSDictionary) as String
+            context.performBlock {
+                photo.region = Region.createWithName(regionName, inManagedObjectContext: context)
+                if photographerData.isNew {
+                    photo.region.photographerCount = photo.region.photographerCount.integerValue + 1
                 }
             }
         }

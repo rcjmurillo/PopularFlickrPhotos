@@ -101,4 +101,17 @@
     return [place valueForKeyPath:FLICKR_PLACE_REGION_NAME];
 }
 
++ (NSArray *)recentGeoreferencedPhotosWithPlaceInformation
+{
+    NSData *data = [NSData dataWithContentsOfURL:[FlickrFetcher URLforRecentGeoreferencedPhotos]];
+    NSDictionary *dataJSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    NSArray *photos = [dataJSON valueForKeyPath:FLICKR_RESULTS_PHOTOS];
+    NSLog(@"%@", photos);
+    for (NSMutableDictionary *photo in photos) {
+        NSData *placeData = [NSData dataWithContentsOfURL:[FlickrFetcher URLforInformationAboutPlace:photo[FLICKR_PLACE_ID]]];
+        photo[@"place"] = [NSJSONSerialization JSONObjectWithData:placeData options:NSJSONReadingMutableContainers error:nil];
+    }
+   return photos;
+}
+
 @end

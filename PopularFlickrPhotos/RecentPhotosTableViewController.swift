@@ -17,9 +17,7 @@ class RecentPhotosTableViewController: CoreDataTableViewController {
         request.sortDescriptors = [NSSortDescriptor(key: "recentOrder", ascending: false)]
         request.predicate = NSPredicate(format: "recentOrder > 0")
         request.fetchLimit = 20
-        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: document.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        println("fetchedResultsController set")
-    }
+        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: document.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)    }
     
     override func viewDidLoad()  {
         super.viewDidLoad()
