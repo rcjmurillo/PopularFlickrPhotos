@@ -29,22 +29,17 @@ class RegionPhotosTableViewController: CoreDataTableViewController {
     }
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Photo Cell", forIndexPath:indexPath) as UITableViewCell!
+        let cell = tableView.dequeueReusableCellWithIdentifier("Photo Cell", forIndexPath:indexPath) as PhotoCell!
         let photo = fetchedResultsController.objectAtIndexPath(indexPath) as Photo
         cell.textLabel.text = photo.title
         cell.detailTextLabel.text = photo.subtitle
-        cell.imageView.contentMode = UIViewContentMode.ScaleToFill
-        cell.imageView.frame = CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, 20.0, 20.0)
         if !photo.imageData {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
                 let imageData = NSData(contentsOfURL: NSURL(string: photo.imageURL))
                 let image = UIImage(data: imageData)
                 dispatch_async(dispatch_get_main_queue()) {
                     if let updateCell = tableView.cellForRowAtIndexPath(indexPath) {
-                        updateCell.imageView.contentMode = UIViewContentMode.ScaleToFill
-                        updateCell.imageView.frame = CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, 20.0, 20.0)
                         updateCell.imageView.image = image
-                        updateCell.setNeedsLayout()
                     }
                     self.managedObjectContext.performBlock {
                         photo.imageData = imageData

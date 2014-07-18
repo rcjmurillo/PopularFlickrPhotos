@@ -21,6 +21,7 @@
 		806912F11968DE2A0028B03C /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 806912F01968DE2A0028B03C /* CoreDataTableViewController.m */; };
 		806912F71968DFE90028B03C /* PopularFlickrPhotos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 806912F51968DFE90028B03C /* PopularFlickrPhotos.xcdatamodeld */; };
 		8069130319699F460028B03C /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8069130219699F460028B03C /* CoreDataHelper.swift */; };
+		807F03911978C07F00FFFB67 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807F03901978C07F00FFFB67 /* PhotoCell.swift */; };
 		809B081619764F7500F48095 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 809B081519764F7500F48095 /* Photo.m */; };
 		80A7B39019580CED00810225 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A7B38F19580CED00810225 /* PhotoViewController.swift */; };
 		80AC087B1959496100790F87 /* RecentPhotosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC087A1959496100790F87 /* RecentPhotosTableViewController.swift */; };
@@ -62,6 +63,7 @@
 		806912F01968DE2A0028B03C /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
 		806912F61968DFE90028B03C /* PopularFlickrPhotos.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PopularFlickrPhotos.xcdatamodel; sourceTree = "<group>"; };
 		8069130219699F460028B03C /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		807F03901978C07F00FFFB67 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		809B081419764F7500F48095 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
 		809B081519764F7500F48095 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		80A7B38F19580CED00810225 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				6CD679E51950C06600530D0F /* AppDelegate.swift */,
 				8013DE19195142B500C58C32 /* RegionsTableViewController.swift */,
 				80CF340819564A1F00341949 /* RegionPhotosTableViewController.swift */,
+				807F03901978C07F00FFFB67 /* PhotoCell.swift */,
 				80A7B38F19580CED00810225 /* PhotoViewController.swift */,
 				80AC087A1959496100790F87 /* RecentPhotosTableViewController.swift */,
 				6CD679E91950C06600530D0F /* Main.storyboard */,
@@ -286,6 +289,7 @@
 				80CF340919564A1F00341949 /* RegionPhotosTableViewController.swift in Sources */,
 				8013DE1819513C0F00C58C32 /* FlickrFetcher.m in Sources */,
 				809B081619764F7500F48095 /* Photo.m in Sources */,
+				807F03911978C07F00FFFB67 /* PhotoCell.swift in Sources */,
 				800EE19B19735F5200286765 /* Photographer.m in Sources */,
 				806912F11968DE2A0028B03C /* CoreDataTableViewController.m in Sources */,
 				8054743F196D05A40045A093 /* Photo+Create.swift in Sources */,
